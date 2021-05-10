@@ -1,15 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp6
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            ColoredLamp coloredGarland = new ColoredLamp();
+            coloredGarland.ReturnCurrentStateOfGarland();
+
+            OrdinaryLamp ordinaryGarland = new OrdinaryLamp();
+            ordinaryGarland.ReturnCurrentStateOfGarland();
+
+            Console.ReadKey();
         }
     }
 }
