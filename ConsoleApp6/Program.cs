@@ -6,11 +6,13 @@ namespace ConsoleApp6
     {
         public static void Main(string[] args)
         {
-            ColoredLamp coloredGarland = new ColoredLamp();
-            coloredGarland.ReturnCurrentStateOfGarland();
+            Console.WriteLine("Colored Garland: ");
+            ColoredGarland coloredGarland = new ColoredGarland();
+            coloredGarland.ReturnCurrentStateOfLampsInGarland();
 
-            OrdinaryLamp ordinaryGarland = new OrdinaryLamp();
-            ordinaryGarland.ReturnCurrentStateOfGarland();
+            Console.WriteLine("\nOrdinary Garland: ");
+            OrdinaryGarland ordinaryGarland = new OrdinaryGarland();
+            ordinaryGarland.ReturnCurrentStateOfLampsInGarland();
 
             Console.ReadKey();
         }
