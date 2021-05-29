@@ -3,11 +3,24 @@ using System.Collections.Generic;
 
 namespace ConsoleApp6
 {
-    public class OrdinaryGarland : Lamp
+    public class OrdinaryGarland<T> where T : Lamp,  new()
     {
-        public void PrintTheListOfLampsInGarland(List<OrdinaryGarland> lamps)
+        public List<T> Lamps { get; set; }
+
+        public OrdinaryGarland()
         {
-            foreach (OrdinaryGarland lamp in lamps)
+            Validator validInput = new Validator();
+            int numberOfLamps = validInput.GetCountOfLampsInGarland();
+            Lamps = new List<T>();
+            for (int i = 1; i < numberOfLamps +1; i++)
+            {
+                Lamps.Insert(i - 1, new T { ID = i });
+            }
+        }
+
+        public void PrintTheListOfLampsInGarland(List<Lamp> lamps)
+        {
+            foreach (Lamp lamp in lamps)
             {
                 if (lamp.State == State.On)
                 {
@@ -20,54 +33,17 @@ namespace ConsoleApp6
                     Console.WriteLine($"---ID: {lamp.ID}, State:{lamp.State}");
                 }
             }
+        Console.ResetColor();
         }
 
-        public List<OrdinaryGarland> PopulateOrdinaryGarland(int countOfLamps)
+        public virtual List<T> ReturnCurrentStateOfLampsInGarland(List<T> lamps)
         {
-            List<OrdinaryGarland> ordinaryLampList = new List<OrdinaryGarland>();
-            for (int i = 0; i < countOfLamps; i++)
+            foreach (T lamp in lamps)
             {
-                if ((i + 4 <= countOfLamps) && (4 <= countOfLamps))
-                {
-                    ordinaryLampList.Insert(i, new OrdinaryGarland { ID = i + 1, State = (i + 1) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    ordinaryLampList.Insert(i + 1, new OrdinaryGarland { ID = i + 2, State = (i + 2) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    ordinaryLampList.Insert(i + 2, new OrdinaryGarland { ID = i + 3, State = (i + 3) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    ordinaryLampList.Insert(i + 3, new OrdinaryGarland { ID = i + 4, State = (i + 4) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    i = i + 3;
-                }
-                else if ((i + 2 < countOfLamps) && (4 < countOfLamps) && (countOfLamps % 4 != 0) && ((countOfLamps + 1) % 2 == 0))
-                {
-                    ordinaryLampList.Insert(i, new OrdinaryGarland { ID = i + 1, State = (i + 1) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    ordinaryLampList.Insert(i + 1, new OrdinaryGarland { ID = i + 2, State = (i + 2) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    ordinaryLampList.Insert(i + 2, new OrdinaryGarland { ID = i + 3, State = (i + 3) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                    i = i + 2;
-                }
-                else
-                {
-                    if ((i + 1 < countOfLamps) && (4 < countOfLamps) && (countOfLamps % 2 == 0) && ((countOfLamps + 2) % 4 == 0))
-                    {
-                        ordinaryLampList.Insert(i, new OrdinaryGarland { ID = i + 1, State = (i + 1) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                        ordinaryLampList.Insert(i + 1, new OrdinaryGarland { ID = i + 2, State = (i + 2) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                        i = i + 1;
-                    }
-                    else if ((i < countOfLamps) && (4 < countOfLamps) && ((countOfLamps % 5 == 0) || ((countOfLamps + 1) % 2 == 0)))
-                    {
-                        ordinaryLampList.Insert(i, new OrdinaryGarland { ID = i + 1, State = (i + 1) % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off });
-                        i = i + 1;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                lamp.State = lamp.ID % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off;
             }
-            return ordinaryLampList;
-        }
-
-        public override void ReturnCurrentStateOfLampsInGarland()
-        {
-            Validator validInput = new Validator();
-                PrintTheListOfLampsInGarland(PopulateOrdinaryGarland(validInput.GetCountOfLampsInGarland()));
+        return lamps;
         }
     }
 }
+    

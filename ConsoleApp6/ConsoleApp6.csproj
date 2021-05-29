@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Color.cs" />
     <Compile Include="ColoredGarland.cs" />
+    <Compile Include="ColoredLamp.cs" />
     <Compile Include="OrdinaryGarland.cs" />
     <Compile Include="Lamp.cs" />
     <Compile Include="Program.cs" />
