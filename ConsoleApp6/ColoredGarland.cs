@@ -7,41 +7,26 @@ namespace ConsoleApp6
     {
         public ColoredGarland() : base()
         {
-            for (int i = 0; i < Lamps.Count; i++)
+            int index = 0;
+            foreach (Lamp lamp in Lamps)
             {
-                if ((i + 4 <= Lamps.Count) && (4 <= Lamps.Count))
-                {
-                    Lamps[i].Color = Color.Red;
-                    Lamps[i + 1].Color = Color.Yellow;
-                    Lamps[i + 2].Color = Color.Green;
-                    Lamps[i + 3].Color = Color.Blue;
-                    i = i + 3;
-                }
-                else if ((i + 2 < Lamps.Count) && (4 < Lamps.Count) && (Lamps.Count % 4 != 0) && ((Lamps.Count + 1) % 2 == 0))
-                {
-                    Lamps[i].Color = Color.Red;
-                    Lamps[i + 1].Color = Color.Yellow;
-                    Lamps[i + 2].Color = Color.Green;
-                    i = i + 2;
-                }
-                else
-                {
-                    if ((i + 1 < Lamps.Count) && (4 < Lamps.Count) && (Lamps.Count % 2 == 0) && ((Lamps.Count + 2) % 4 == 0))
+                    index += 1;
+                    int caseSwitch = (index + 1) % 4;
+                    switch (caseSwitch)
                     {
-                        Lamps[i].Color = Color.Red;
-                        Lamps[i + 1].Color = Color.Yellow;
-                        i = i + 1;
-                    }
-                    else if ((i < Lamps.Count) && (4 < Lamps.Count) && ((Lamps.Count % 5 == 0) || ((Lamps.Count + 1) % 2 == 0)))
-                    {
-                        Lamps[i].Color = Color.Red;
-                        i = i + 1;
-                    }
-                    else
-                    {
-                        continue;
-                    }
-                }
+                        case 0:
+                            Lamps[index - 1].Color = Color.Green;
+                            break;
+                        case 1:
+                            Lamps[index - 1].Color = Color.Blue;
+                            break;
+                        case 2:
+                            Lamps[index - 1].Color = Color.Red;
+                            break;
+                        case 3:
+                            Lamps[index - 1].Color = Color.Yellow;
+                            break;
+                    }      
             }
         }
 

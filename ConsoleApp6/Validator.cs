@@ -26,7 +26,7 @@ namespace ConsoleApp6
                         }
                         else if (Convert.ToInt32(inputString) < 4)
                         {
-                            Console.WriteLine("\nIncorrect Input: Values less than 3 are not allowed ");
+                            Console.WriteLine("\nIncorrect Input: Values less than 4 are not allowed ");
                             attempt++;
                             continue;
                         }

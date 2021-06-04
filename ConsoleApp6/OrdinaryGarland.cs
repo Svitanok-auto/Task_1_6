@@ -36,11 +36,12 @@ namespace ConsoleApp6
         Console.ResetColor();
         }
 
-        public virtual List<T> ReturnCurrentStateOfLampsInGarland(List<T> lamps)
+        public List<T> ReturnCurrentStateOfLampsInGarland(List<T> lamps)
         {
+            DateTime dateTimeNow = DateTime.Now;
             foreach (T lamp in lamps)
             {
-                lamp.State = lamp.ID % 2 == DateTime.Now.Minute % 2 ? State.On : State.Off;
+                lamp.State = lamp.ID % 2 == dateTimeNow.Minute % 2 ? State.On : State.Off;
             }
         return lamps;
         }
