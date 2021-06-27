@@ -8,21 +8,13 @@ namespace ConsoleApp6
         public static void Main(string[] args)
         {
             Console.WriteLine("\nOrdinary Garland: ");
-            OrdinaryGarland<Lamp> ordinaryGarland = new OrdinaryGarland<Lamp>();
+            Garland<Lamp> ordinaryGarland = new Garland<Lamp>();
             Console.WriteLine("\nColored Garland: ");
             ColoredGarland coloredGarland = new ColoredGarland();
 
-            ReturnStateOfOrdinaryOrColoredGarland(ordinaryGarland, coloredGarland);
-
-            Console.WriteLine("Work complete");
-            Console.ReadKey();
-        }
-
-        public static void ReturnStateOfOrdinaryOrColoredGarland(OrdinaryGarland<Lamp> ordinaryGarland, ColoredGarland coloredGarland)
-        {
             Validator validInput = new Validator();
             int attempt = 0;
-            while (attempt < MAX_ATTEMPTS)
+            while ((attempt < MAX_ATTEMPTS))
             {
                 switch (validInput.GetChoiceToShowGarland())
                 {
@@ -31,11 +23,15 @@ namespace ConsoleApp6
                         attempt++;
                         break;
                     case 2:
-                        coloredGarland.PrintTheListOfLampsInColoredGarland(coloredGarland.ReturnCurrentStateOfLampsInGarland(coloredGarland.Lamps));
+                        coloredGarland.PrintTheListOfLampsInGarland(coloredGarland.ReturnCurrentStateOfLampsInGarland(coloredGarland.Lamps));
                         attempt++;
                         break;
+                    case 3:
+                        Console.WriteLine("Work complete");
+                        return;
                 }
             }
+            Console.ReadKey();
         }
     }
 }

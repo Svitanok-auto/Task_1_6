@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ConsoleApp6
 {
-    public class OrdinaryGarland<T> where T : Lamp,  new()
+    public class Garland<T> where T : Lamp,  new()
     {
         public List<T> Lamps { get; set; }
 
-        public OrdinaryGarland()
+        public Garland()
         {
             Validator validInput = new Validator();
             int numberOfLamps = validInput.GetCountOfLampsInGarland();
@@ -18,7 +18,7 @@ namespace ConsoleApp6
             }
         }
 
-        public void PrintTheListOfLampsInGarland(List<Lamp> lamps)
+        public virtual void PrintTheListOfLampsInGarland(List<T> lamps)
         {
             foreach (Lamp lamp in lamps)
             {

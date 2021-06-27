@@ -54,13 +54,13 @@ namespace ConsoleApp6
 
         public int GetChoiceToShowGarland()
         {
-            Console.WriteLine("\nPopulate 1 to see Ordinary Garland or 2 to see Colored Garland: ");
+            Console.WriteLine("\nPopulate 1 to see Ordinary Garland or 2 to see Colored Garland; or 3 to complete work: ");
             int attempt = 0;
             int choiceToSeeGarland = 0;
             while (attempt < MAX_ATTEMPTS)
             {
                 string inputString = Console.ReadLine();
-                if ((inputString.ToString() != string.Empty) && ((inputString.ToString() == "1") || (inputString.ToString() == "2")))
+                if ((inputString.ToString() != string.Empty) && ((inputString.ToString() == "1") || (inputString.ToString() == "2")) || (inputString.ToString() == "3"))
                 {
                     try
                     {
@@ -80,7 +80,7 @@ namespace ConsoleApp6
                     catch (SystemException ex)
                     {
                         Console.WriteLine("\nIncorrect Input, error: " + ex.Message);
-                        Console.WriteLine("\nMake a choice 1 or 2");
+                        Console.WriteLine("\nMake a choice 1, 2 or 3");
                         attempt++;
                     }
                 }

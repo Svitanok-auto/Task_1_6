@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ConsoleApp6
 {
-    public class ColoredGarland : OrdinaryGarland<ColoredLamp>
+    public class ColoredGarland : Garland<ColoredLamp>
     {
         public ColoredGarland() : base()
         {
@@ -11,8 +11,8 @@ namespace ConsoleApp6
             foreach (Lamp lamp in Lamps)
             {
                     index += 1;
-                    int caseSwitch = (index + 1) % 4;
-                    switch (caseSwitch)
+                    int positionOfLampInGarland = (index + 1) % 4;
+                    switch (positionOfLampInGarland)
                     {
                         case 0:
                             Lamps[index - 1].Color = Color.Green;
@@ -30,7 +30,7 @@ namespace ConsoleApp6
             }
         }
 
-        public void PrintTheListOfLampsInColoredGarland(List<ColoredLamp> lamps)
+        public override void PrintTheListOfLampsInGarland(List<ColoredLamp> lamps)
         {
             foreach (ColoredLamp lamp in lamps)
             {
@@ -59,7 +59,7 @@ namespace ConsoleApp6
                     Console.ForegroundColor = ConsoleColor.Black;
                     Console.WriteLine($"---ID: {lamp.ID}, Color:{lamp.Color}, State:{lamp.State}");
                 }
-            Console.ResetColor();
+                Console.ResetColor();
             }
         }
     }
